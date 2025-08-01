@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Acesso Restrito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    .logo {
+      max-height: 80px;
+      margin-bottom: 10px;
+      width: auto;
+    }
+    .titulo-central {
+      font-size: 20px;
+      color: #003366;
+      margin: 10px 0 20px 0;
+      font-weight: bold;
+    }
+    input[type="password"] {
+      padding: 12px;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button:hover {
+      background-color: #00509e;
+    }
+    #link-secreto {
+      display: none;
+      margin-top: 20px;
+    }
+    #link-secreto ul {
+      list-style: none;
+      padding: 0;
+    }
+    #link-secreto li {
+      margin: 10px 0;
+    }
+    a {
+      color: #003366;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsividade específica para telas pequenas */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+      .logo {
+        max-height: 60px;
+      }
+      .titulo-central {
+        font-size: 18px;
+      }
+      input[type="password"], button {
+        font-size: 14px;
+      }
+      a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo-pp.png" alt="Logo CME" class="logo">
+    <h1 class="titulo-central">Central de Monitoramento Eletrônico</h1>
+    <h2>RELATÓRIO</h2>
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <br>
+    <button onclick="verificarSenha()">Entrar</button>
+    <div id="link-secreto">
+      <p>✅ Acesso liberado:</p>
+      <ul>
+        <li><a href="https://centralap.github.io/relatorio/" target="_blank">Cadastro</a></li>
+        <li><a href="https://centralap.github.io/relatorio/banco" target="_blank">Banco de Dados</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function verificarSenha() {
+      var senha = document.getElementById('senha').value;
+      if (senha === "CME@echo2025") {
+        document.getElementById('link-secreto').style.display = 'block';
+      } else {
+        alert('Senha incorreta!');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var inputSenha = document.getElementById('senha');
+      inputSenha.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          verificarSenha();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
